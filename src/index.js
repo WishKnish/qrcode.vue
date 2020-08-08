@@ -202,7 +202,6 @@ const QrcodeVue = {
                   shapeRendering: 'crispEdges',
                   viewBox: `0 0 ${numCells} ${numCells}`,
                 },
-                style: { width: size + 'px', height: size + 'px' },
               },
               [
                 createElement('path', {
@@ -220,7 +219,6 @@ const QrcodeVue = {
               'canvas',
               {
                 attrs: { height: size, width: size },
-                style: { width: size + 'px', height: size + 'px' },
                 ref: 'qrcode-vue',
               },
               []
