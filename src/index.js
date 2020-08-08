@@ -39,9 +39,9 @@ function toUTF8String(str) {
 
 function generatePath(modules, margin = 0) {
   const ops = []
-  modules.forEach(function(row, y) {
+  modules.forEach(function (row, y) {
     let start = null
-    row.forEach(function(cell, x) {
+    row.forEach(function (cell, x) {
       if (!cell && start !== null) {
         // M0 0h7v1H0z injects the space with the move and drops the comma,
         // saving a char per operation
@@ -65,8 +65,9 @@ function generatePath(modules, margin = 0) {
         } else {
           // Otherwise finish the current line.
           ops.push(
-            `M${start + margin},${y + margin} h${x + 1 - start}v1H${start +
-              margin}z`
+            `M${start + margin},${y + margin} h${x + 1 - start}v1H${
+              start + margin
+            }z`
           )
         }
         return
@@ -93,9 +94,8 @@ const QrcodeVue = {
       default: '',
     },
     size: {
-      type: [Number, String],
-      default: 100,
-      validator: (s) => isNaN(Number(s)) !== true,
+      type: String,
+      default: null,
     },
     level: {
       type: String,
@@ -161,8 +161,8 @@ const QrcodeVue = {
         canvas.height = canvas.width = _size * scale
         ctx.scale(scale, scale)
 
-        cells.forEach(function(row, rdx) {
-          row.forEach(function(cell, cdx) {
+        cells.forEach(function (row, rdx) {
+          row.forEach(function (cell, cdx) {
             ctx.fillStyle = cell ? foreground : background
             const w = Math.ceil((cdx + 1) * tileW) - Math.floor(cdx * tileW)
             const h = Math.ceil((rdx + 1) * tileH) - Math.floor(rdx * tileH)
